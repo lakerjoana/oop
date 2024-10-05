@@ -1,0 +1,29 @@
+class StudentRegistration:
+    def __init__(self,name,age):
+        self.students={}
+        self.name =name
+        self.age=age
+
+    def register(self,name,registration_number,**kwargs):
+        self.students[registration_number]={
+                'name':name,
+                **kwargs
+            }
+           
+        print (f"Student {name} with registation number{registration_number} has been registered.")
+
+    def display_students(self):
+                for registration_number, student in self.students.items():
+                    print(f"Registration Number :{registration_number}")
+                    print(f"Name :{student['name']}")
+                    for key,value in student.items():
+                        if key not in ['name','registration_number']:
+                            print(f"{key.capitalize()}:{value}")
+                            print("")
+
+student_registration = StudentRegistration("Admin", 30)
+student_registration.register("Laker Joanna", "Reg01", program="Computer Enginering", year=2)
+student_registration.register("Aber Charity", "Reg02", program="information technology", year=2)
+student_registration.display_students()
+
+
